@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic tac toe</title>
+    <title>Tictactics</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -12,11 +12,11 @@
     <main>
         <div class="wrapper">
             <div>
-                <h1 class="title">Tic tac toe</h1>
                 <div>
+                    <h1>TicTactics</h1>
                     <div class="heading-wrapper">
                         <div class="mode-wrapper">
-                            <p>Game mode: </p>
+                            <p>Mode: </p>
                             <div class="mode">
                                 <p><span id="single">Single</span><span>|</span><span id="multiplayer">Multiplayer</span></p>
                             </div>
@@ -27,6 +27,12 @@
                                 <p><span id="o-btn">O</span><span>|</span><span id="x-btn">X</span></p>
                             </div>
                         </div>
+                        <div class="scoreboard">
+                            <div>Player X: <span id="score-x">0</span></div>
+                            <div>Player O: <span id="score-o">0</span></div>
+                            <div>Draws: <span id="score-draws">0</span></div>
+                        </div>
+                        <button id="reset-btn">Reset Game</button>
                     </div>
                 </div>
             </div>

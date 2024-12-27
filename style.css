@@ -24,12 +24,6 @@ body {
     user-select: none;
 }
 
-.title {
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    font-size: 2.1rem;
-}
-
 .options {
     font-size: 20px;
     margin: 20px;
@@ -96,6 +90,29 @@ span:hover {
 
 #single {
     text-decoration: underline;
+}
+
+.scoreboard {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 1.2em;
+}
+
+.status {
+    
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: var(--board-clr);
+}
+
+button:hover {
+    transform: scale(1.05);
 }
 
 @keyframes fadeInOut {
