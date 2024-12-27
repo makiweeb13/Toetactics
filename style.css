@@ -80,7 +80,6 @@ span:hover {
 
 .status {
     position: absolute;
-    bottom: 70px;
 }
 
 .mode {
@@ -98,10 +97,6 @@ span:hover {
     flex-direction: column;
     justify-content: space-around;
     font-size: 1.2em;
-}
-
-.status {
-    
 }
 
 button {
@@ -127,7 +122,7 @@ button:hover {
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
     .wrapper {
         flex-direction: row;
         justify-content: space-around;
@@ -146,14 +141,15 @@ button:hover {
     .options {
         font-size: 2rem;
     }
+
+    .status {
+        top: 36rem;
+    }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
     .wrapper {
         transform: scale(0.9);
-    }
-    .title {
-        font-size: 40px;
     }
     .heading-wrapper {
        display: flex;
@@ -170,13 +166,13 @@ button:hover {
         margin: 0;
         padding: 0;
     }
-    .status {
-        bottom: -70px;
-    }
     span {
         font-size: 15px;
         position: relative;
         bottom: 7px;
+    }
+    .status {
+        bottom: -50px;
     }
 }
 
