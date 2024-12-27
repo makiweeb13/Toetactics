@@ -143,4 +143,4 @@ The code applies animations to highlight winning tiles using CSS styles when a p
 | `stratPlay`            | Implements the opponent's strategies for attacking and defending.          |
 | `clear`                | Clears the board and resets game-related messages.                        |
 
-### Site live on : https://makiweeb13.github.io/Toetactics/
+Site live on : https://makiweeb13.github.io/Toetactics/
