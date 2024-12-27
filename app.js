@@ -8,7 +8,11 @@ const OBtn = document.getElementById('o-btn');
 const singleMode = document.getElementById('single');
 const multiplayerMode = document.getElementById('multiplayer');
 const pickCharacter = document.querySelector('.pick-character');
+const resetBtn = document.getElementById('reset-btn');
 const firstMoves = [1, 3, 5, 7, 9];
+const xScore = document.getElementById('score-x');
+const oScore = document.getElementById('score-o');
+const drawScore = document.getElementById('score-draws');
 
 const numValue = { 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 
                    6: 'six', 7: 'seven', 8: 'eight', 9: 'nine' }
@@ -17,6 +21,9 @@ let player = 'X';
 let opponent = 'O';
 let currentMode = 'single';
 let countTurn = 1;
+
+// Score variables
+let scoreX = scoreO = scoreDraws = 0;
 
 let tileNum, playerTiles, opponentTiles, opponentCount, corners, winningTiles, haveWon, interval;
 const remove = currentTile => tileNum = tileNum.filter(tile => tile !== currentTile);
@@ -36,8 +43,21 @@ function initialize() {
     haveWon = false;
 }
 
+function updateScoreboard() {
+    xScore.textContent = scoreX;
+    oScore.textContent = scoreO;
+    drawScore.textContent = scoreDraws;
+}
+
+function addScore(player) {
+    if (player == 'X') scoreX++;
+    else if (player == 'O') scoreO++;
+    else scoreDraws++;
+}
+
 function startGame() {
     initialize();
+    updateScoreboard();
     if (currentMode === 'single') generateRandomFirstMove();
     tiles.forEach(tile => tile.addEventListener('click', function(event) {
         const currentTile = event.currentTarget.classList;
@@ -104,6 +124,7 @@ function handleMultiplayerGame(tile) {
     if (countedTilesP1.includes(3)) {
         let tilesToWinP1 = recordP1[countedTilesP1.indexOf(3)];
         comment.textContent = `Player ${player} Won!`;
+        addScore(player);
         for (let i = 0; i < tilesToWinP1.length; i++) {
             let tilesWonP1 = document.querySelector('.' + numValue[tilesToWinP1[i]]);
             tilesWonP1.style.animation = "fadeInOut 700ms ease-out";
@@ -117,6 +138,7 @@ function handleMultiplayerGame(tile) {
     } else if (countedTilesP2.includes(3)) {
         let tilesToWinP2 = recordP2[countedTilesP2.indexOf(3)];
         comment.textContent = `Player ${opponent} Won!`;
+        addScore(opponent);
         for (let i = 0; i < tilesToWinP2.length; i++) {
             let tilesWonP2 = document.querySelector('.' + numValue[tilesToWinP2[i]]);
             tilesWonP2.style.animation = "fadeInOut 700ms ease-out";
@@ -129,6 +151,7 @@ function handleMultiplayerGame(tile) {
         startOver();
     } else if (countTurn === 9) {
         comment.textContent = "It's a draw!";
+        addScore('');
         startOver();
     }
     countTurn++;
@@ -191,6 +214,7 @@ function clear() {
     }
     comment.textContent = '';
     continueMessage.textContent = '';
+    updateScoreboard();
 }
 
 // The playing strategies of the opponent including attacking and defending
@@ -210,6 +234,7 @@ function stratPlay() {
         setTimeout(() => {
             document.querySelector('.' + numValue[tile]).textContent = opponent;
             comment.textContent = "Opponent wins!";
+            addScore(opponent)
 
             for (let i = 0; i < tileToWin.length; i++) {
                 let wonTiles = document.querySelector('.' + numValue[tileToWin[i]]);
@@ -268,6 +293,7 @@ function stratPlay() {
         if (!haveWon) {
             setTimeout(() => {
                 comment.textContent = "It'a draw!";
+                addScore('')
             }, 500);
         }
     }
@@ -330,3 +356,9 @@ singleMode.addEventListener('click', function() {
     clear();
     startGame();
 })
+
+resetBtn.addEventListener('click', function() {
+    initialize();
+    clear();
+    startGame();
+});

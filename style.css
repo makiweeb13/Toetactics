@@ -166,7 +166,7 @@ button:hover {
         margin: 0;
         padding: 0;
     }
-    span {
+    .mode span, .options span {
         font-size: 15px;
         position: relative;
         bottom: 7px;
