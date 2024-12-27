@@ -1,6 +1,6 @@
 # ToeTactics
 
-## Video Demo: 
+### Video Demo: 
 
 ## Description:
 This project is a web-based implementation of the classic Tic-Tac-Toe game. It allows users to play against another player or against a computer (single-player mode). The game keeps track of scores for both players and the number of draws.
@@ -142,3 +142,5 @@ The code applies animations to highlight winning tiles using CSS styles when a p
 | `handleMultiplayerGame`| Alternates turns between two players and checks for win conditions.        |
 | `stratPlay`            | Implements the opponent's strategies for attacking and defending.          |
 | `clear`                | Clears the board and resets game-related messages.                        |
+
+Site live on : https://makiweeb13.github.io/Toetactics/
