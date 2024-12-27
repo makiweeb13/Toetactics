@@ -41,6 +41,7 @@ function initialize() {
     tileNum = Object.values(numValue);
     winningTiles = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]];
     haveWon = false;
+    countTurn = 1;
 }
 
 function updateScoreboard() {
@@ -292,7 +293,7 @@ function stratPlay() {
 
         if (!haveWon) {
             setTimeout(() => {
-                comment.textContent = "It'a draw!";
+                comment.textContent = "It's a draw!";
                 addScore('')
             }, 500);
         }
@@ -358,6 +359,7 @@ singleMode.addEventListener('click', function() {
 })
 
 resetBtn.addEventListener('click', function() {
+    haveWon = true;
     initialize();
     clear();
     startGame();
