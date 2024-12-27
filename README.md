@@ -1,6 +1,8 @@
 # TicTactics
 
-## Overview
+## Video Demo: 
+
+## Description:
 This project is a web-based implementation of the classic Tic-Tac-Toe game. It allows users to play against another player or against a computer (single-player mode). The game keeps track of scores for both players and the number of draws.
 
 ## Features
@@ -40,27 +42,103 @@ The HTML file sets up the structure of the game, including the game board, mode 
 ### CSS
 The CSS file styles the game elements, including the game board, tiles, buttons, and scoreboard.
 
+## Code Explanation
+
 ### JavaScript
-The JavaScript file contains the game logic and functionality:
-- **Initialization**: Sets up the initial state of the game.
-- **Event Listeners**: Handles user interactions such as clicking on tiles, selecting mode, and picking characters.
-- **Game Logic**: Manages the game state, checks for win conditions, and updates the scoreboard.
-- **Reset Functionality**: Resets the game state and clears the board.
 
-### Detailed Code Explanation
-#### Initialization
-The `initialize` function sets up the initial state of the game by resetting player and opponent tiles, available corners, and winning tile combinations. It also sets the `haveWon` flag to `false`.
+The JavaScript file (`app.js`) contains the logic and functionality of the Tic-Tac-Toe game. Below is a detailed explanation of each section of the code:
 
-#### Event Listeners
-Event listeners are added to the player character buttons and game mode buttons to allow players to switch between 'X' and 'O' and toggle between single-player and multiplayer modes. These event listeners call the `initialize`, `clear`, and `startGame` functions to reset and start the game with the selected settings.
+---
 
-#### Game Logic
-The `handleGame` function determines the current game mode and calls either `handleSingleGame` or `handleMultiplayerGame` based on the mode. These functions update the game board, check for winning conditions, and handle the opponent's response in single-player mode.
+### 1. **Initializations**
+The code starts by initializing essential variables, DOM elements, and game state:
+- **Tiles and Scores**: References the board tiles and scoreboard elements.
+- **Player and Opponent**: Tracks the current player's and opponent's characters ('X' and 'O').
+- **Game State Variables**: Includes `tileNum`, `corners`, `winningTiles`, and others to keep track of available tiles, winning combinations, and whether someone has won.
 
-#### Reset Functionality
-The `resetBtn` event listener calls the `initialize`, `clear`, and `startGame` functions to reset the game state and clear the board when the reset button is clicked.
+---
 
-## How to Run the Project
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/tic-tac-toe.git
+### 2. **Game Initialization**
+The `initialize` function resets the game variables:
+- **Player Moves**: Clears the moves of both players.
+- **Winning Tiles**: Prepares an array of possible winning combinations.
+- **Flags**: Sets the `haveWon` flag to `false`.
+
+---
+
+### 3. **Start Game**
+The `startGame` function:
+1. Calls `initialize` to reset the game state.
+2. Updates the scoreboard with `updateScoreboard`.
+3. Generates the first random move if in single-player mode.
+4. Adds click event listeners to each tile to handle the game logic.
+
+---
+
+### 4. **Handle Game Logic**
+The `handleGame` function determines the current game mode (single or multiplayer) and processes the player's move:
+- **Single Player Mode**: The bot (opponent) responds after the player makes a move.
+- **Multiplayer Mode**: Alternates turns between two players.
+
+---
+
+### 5. **Single Player Logic**
+The `handleSingleGame` function handles:
+1. **Player Moves**: Updates the board with the player's move.
+2. **Opponent Response**: Calls `opponentResponse` to calculate the bot's next move using strategies such as blocking the player or taking corners.
+
+---
+
+### 6. **Multiplayer Logic**
+The `handleMultiplayerGame` function alternates between the two players based on the turn count:
+1. Updates the board with the current player's or opponent's move.
+2. Checks for win conditions or draws.
+3. Highlights the winning tiles and updates the scoreboard if someone wins.
+
+---
+
+### 7. **Opponent Strategies**
+The `stratPlay` function implements the bot's playing strategies in single-player mode:
+- **Attack**: Wins if it detects two tiles in a row and one empty tile.
+- **Defend**: Blocks the player if they are about to win.
+- **Random Moves**: Plays a random move when no immediate strategy is applicable.
+
+---
+
+### 8. **Tile Management**
+Helper functions:
+- `getTileNum`: Converts a tile's class name to its numerical equivalent.
+- `remove` and `removeCorner`: Updates the list of available tiles after a move.
+
+---
+
+### 9. **Reset and Restart**
+The `startOver` and `resetBtn` event listeners reset the game state:
+- Clears the board.
+- Resets game variables.
+- Starts a new game.
+
+---
+
+### 10. **Character Selection and Game Mode**
+The code includes event listeners for buttons:
+- **Character Selection**: Allows the player to choose 'X' or 'O'.
+- **Mode Selection**: Switches between single-player and multiplayer modes.
+
+---
+
+### 11. **Visual Effects**
+The code applies animations to highlight winning tiles using CSS styles when a player wins.
+
+---
+
+### Summary of Functions
+| **Function**           | **Purpose**                                                                 |
+|-------------------------|-----------------------------------------------------------------------------|
+| `initialize`           | Resets the game state and variables.                                        |
+| `startGame`            | Initializes the game and adds event listeners to tiles.                    |
+| `handleGame`           | Processes player moves based on the selected game mode.                    |
+| `handleSingleGame`     | Handles player moves and calls opponent's response in single-player mode.  |
+| `handleMultiplayerGame`| Alternates turns between two players and checks for win conditions.        |
+| `stratPlay`            | Implements the opponent's strategies for attacking and defending.          |
+| `clear`                | Clears the board and resets game-related messages.                        |
