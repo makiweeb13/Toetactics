@@ -1,6 +1,6 @@
 # ToeTactics
 
-### Video Demo: 
+### Video Demo: https://youtu.be/Af0rUjLMGhs?si=OlWRZdQAZtQOVZCY
 
 ## Description:
 This project is a web-based implementation of the classic Tic-Tac-Toe game. It allows users to play against another player or against a computer (single-player mode). The game keeps track of scores for both players and the number of draws.
